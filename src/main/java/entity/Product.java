@@ -1,14 +1,12 @@
 package entity;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Data;
 
 @Entity
 @Data
-public class Product extends BaseEntity{
+public class Product {
 
 	  @Column(name = "product_id")
 	  private Integer id;
