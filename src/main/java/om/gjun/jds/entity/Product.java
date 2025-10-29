@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Builder
 @Table(name = "product")
-public class Product {
+public class Product extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +27,5 @@ public class Product {
 	private Integer product_price;
 	@Column(name = "product_image")
 	private String image;
+
 }
