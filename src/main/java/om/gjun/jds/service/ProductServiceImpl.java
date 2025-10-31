@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import om.gjun.jds.dto.request.ProductReq;
 import om.gjun.jds.entity.Product;
 import om.gjun.jds.repository.ProductRepository;
 
@@ -20,6 +21,14 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> products = productRepository.findAll();
 
 		return products;
+	}
+
+	@Override
+	public Product addProduct(ProductReq req) {
+		Product product = Product.builder().name(req.getName()).description(req.getDescription())
+				.product_price(req.getPrice()).image(req.getImage()).build();
+
+		return productRepository.save(product);
 	}
 
 }
