@@ -1,4 +1,4 @@
-package entity;
+package com.gjun.entity;
 
 import java.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;

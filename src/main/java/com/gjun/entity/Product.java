@@ -1,4 +1,4 @@
-package entity;
+package com.gjun.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

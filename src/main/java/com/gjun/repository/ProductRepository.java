@@ -1,8 +1,8 @@
-package repository;
+package com.gjun.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import entity.Product;
+import com.gjun.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
