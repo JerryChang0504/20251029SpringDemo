@@ -11,15 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import om.gjun.jds.dto.request.ProductReq;
+import om.gjun.jds.dto.request.updateProductReq;
 import om.gjun.jds.entity.Product;
 import om.gjun.jds.service.ProductService;
+import om.gjun.jds.service.ProductServiceImpl;
 
 @RestController
 @RequestMapping("api")
 public class ProductController {
 
+	private final ProductServiceImpl productServiceImpl;
+
 	@Autowired
 	private ProductService productService;
+
+	ProductController(ProductServiceImpl productServiceImpl) {
+		this.productServiceImpl = productServiceImpl;
+	}
 
 	@GetMapping("queryAllProducts")
 	public ResponseEntity<List<Product>> queryAllProducts() {
@@ -31,4 +39,8 @@ public class ProductController {
 		productService.addProduct(req);
 	}
 
+	@PostMapping("updateProduct")
+	public Product updateProduct(@RequestBody updateProductReq req) {
+		return productService.updateProduct(req);
+	}
 }
