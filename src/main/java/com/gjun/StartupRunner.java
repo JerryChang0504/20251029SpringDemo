@@ -1,4 +1,4 @@
-package com.gjun.jds;
+package com.gjun;
 
 import java.sql.Connection;
 import java.sql.SQLException;
