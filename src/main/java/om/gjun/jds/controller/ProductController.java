@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import om.gjun.jds.dto.request.ProductReq;
+import om.gjun.jds.dto.request.UpdateProductReq;
 import om.gjun.jds.entity.Product;
 import om.gjun.jds.sevice.ProductService;
 
@@ -26,9 +27,14 @@ public class ProductController {
 		return ResponseEntity.ok(productService.queryAllProducts());
 	}
 
-	@PostMapping("saveProducts")
+	@PostMapping("saveProduct")
 	public void saveProducts(@RequestBody ProductReq req) {
-		productService.saveProduct(req);
+		ResponseEntity.ok(productService.saveProduct(req));
+	}
+
+	@PostMapping("updateProduct")
+	public Product postMethodName(@RequestBody UpdateProductReq req) {
+		return productService.updatProduct(req);
 	}
 
 }
