@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.gjun.dto.request.ProductReq;
 import com.gjun.entity.Product;
 import com.gjun.repository.ProductRepository;
 
@@ -17,7 +18,7 @@ public class ProductServiceImpl implements ProductService  {
   private ProductRepository productRepository;
 
   @Override
-  public List<Product> QueryProduct() {
+  public List<Product> QueryAllProduct() {
     return productRepository.findAll();
   }
 
@@ -26,6 +27,17 @@ public class ProductServiceImpl implements ProductService  {
     Optional.ofNullable(products)
         .filter(list -> !CollectionUtils.isEmpty(list))
         .ifPresent(productRepository::saveAll);
+  }
+  @Override
+  public Product saveProduct(ProductReq req) {
+	  Product product = Product.builder()
+			  .name(req.getName())
+			  .price(req.getPrice())
+			  .description(req.getDescription())
+			  .image(req.getImage())
+			  .build();
+	  
+	  return productRepository.save(product);
   }
 
 }
