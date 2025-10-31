@@ -5,19 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import om.gjun.jds.dto.ProductDto;
 import om.gjun.jds.entity.Product;
 import om.gjun.jds.repository.ProductRepository;
 
 @Service
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
 
 	// methods
-	List<Product> findAllProducts() {
+	public List<Product> findAllProducts() {
 		List<Product> products = productRepository.findAll();
 
 		return products;
 	}
+
+	public Product saveProduct(ProductDto dto) {
+		Product product = Product.builder().name(dto.getName()).description(dto.getDescription()).price(dto.getPrice())
+				.image(dto.getImage()).build();
+
+		return productRepository.save(product);
+	}
+
 }

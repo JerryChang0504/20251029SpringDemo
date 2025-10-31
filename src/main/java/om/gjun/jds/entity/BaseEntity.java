@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import jakarta.persistence.Column;
 
 public class BaseEntity {
+
 	@CreatedDate // 當 Entity 第一次儲存時自動填入時間
 	@Column(updatable = false) // 此欄位建立後不可被更新
 	protected LocalDateTime createdAt;
