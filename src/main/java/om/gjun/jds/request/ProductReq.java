@@ -1,9 +1,9 @@
-package om.gjun.jds.dto;
+package om.gjun.jds.request;
 
 import lombok.Data;
 
 @Data
-public class ProductDto {
+public class ProductReq {
 
 	// field
 	private String name;

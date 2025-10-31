@@ -2,14 +2,17 @@ package om.gjun.jds.service;
 
 import java.util.List;
 
-import om.gjun.jds.dto.ProductDto;
 import om.gjun.jds.entity.Product;
+import om.gjun.jds.request.ProductReq;
+import om.gjun.jds.request.UpdateReq;
 
 public interface ProductService {
 
 	// methods
 	public List<Product> findAllProducts();
 
-	public Product saveProduct(ProductDto dto);
+	public Product saveProduct(ProductReq req);
+
+	public Product updateProduct(UpdateReq req);
 
 }

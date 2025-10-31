@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Entity
 @Data
 @Builder
