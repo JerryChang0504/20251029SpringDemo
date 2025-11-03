@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.gjun.dto.request.ProductReq;
+import com.gjun.dto.request.UpdateProductReq;
 import com.gjun.entity.Product;
 import com.gjun.repository.ProductRepository;
 
@@ -38,6 +39,16 @@ public class ProductServiceImpl implements ProductService  {
 			  .build();
 	  
 	  return productRepository.save(product);
+  }
+  @Override
+  public Product updateProduct(UpdateProductReq req) {
+    return productRepository.findById(req.getId()).map(original -> {
+      Product updated =
+          Product.builder().id(original.getId()).name(req.getName()).price(req.getPrice())
+              .description(req.getDescription()).image(req.getImage()).build();
+      return productRepository.save(updated);
+    }).orElse(null);
+
   }
 
 }
