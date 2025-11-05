@@ -13,7 +13,9 @@ public interface ProductService {
 	void SaveProduct(List<Product> products);
 
 	Product saveProduct(ProductReq req);
-	
+
 	public Product updateProduct(UpdateProductReq req);
+
+	public Product deleteProduct(Integer id);
 
 }

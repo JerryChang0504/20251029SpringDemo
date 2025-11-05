@@ -13,7 +13,7 @@ import com.gjun.entity.Product;
 import com.gjun.repository.ProductRepository;
 
 @Service
-public class ProductServiceImpl implements ProductService  {
+public class ProductServiceImpl implements ProductService {
 
   @Autowired
   private ProductRepository productRepository;
@@ -29,26 +29,32 @@ public class ProductServiceImpl implements ProductService  {
         .filter(list -> !CollectionUtils.isEmpty(list))
         .ifPresent(productRepository::saveAll);
   }
+
   @Override
   public Product saveProduct(ProductReq req) {
-	  Product product = Product.builder()
-			  .name(req.getName())
-			  .price(req.getPrice())
-			  .description(req.getDescription())
-			  .image(req.getImage())
-			  .build();
-	  
-	  return productRepository.save(product);
+    Product product = Product.builder()
+        .name(req.getName())
+        .price(req.getPrice())
+        .description(req.getDescription())
+        .image(req.getImage())
+        .build();
+
+    return productRepository.save(product);
   }
+
   @Override
   public Product updateProduct(UpdateProductReq req) {
     return productRepository.findById(req.getId()).map(original -> {
-      Product updated =
-          Product.builder().id(original.getId()).name(req.getName()).price(req.getPrice())
-              .description(req.getDescription()).image(req.getImage()).build();
+      Product updated = Product.builder().id(original.getId()).name(req.getName()).price(req.getPrice())
+          .description(req.getDescription()).image(req.getImage()).build();
       return productRepository.save(updated);
     }).orElse(null);
 
+  }
+
+  @Override
+  public void deleteProduct(Integer id) {
+    productRepository.deleteById(id);
   }
 
 }
