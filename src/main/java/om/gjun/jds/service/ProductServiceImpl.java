@@ -34,13 +34,18 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product updateProduct(updateProductReq req) {
-//original 為變數名稱
+		// original 為變數名稱
 		return productRepository.findById(req.getId()).map(original -> {
 			Product updated = Product.builder().id(req.getId()).name(req.getName()).description(req.getDescription())
 					.product_price(req.getPrice()).image(req.getImage()).build();
 			return productRepository.save(updated);
 		}).orElse(null);
 
+	}
+
+	@Override
+	public void deleteProduct(Integer id) {
+		productRepository.deleteById(id);
 	}
 
 }
