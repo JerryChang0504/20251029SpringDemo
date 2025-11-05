@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,8 +48,8 @@ public class ProductController {
 
   @Operation(summary = "刪除產品")
   @ApiResponse(responseCode = "200", description = "刪除成功")
-  @DeleteMapping("deleteProduct")
-  public void deleteProduct(Integer id) {
+  @DeleteMapping("deleteProduct/{id}")
+  public void deleteProduct(@PathVariable Integer id) {
     productService.deleteProduct(id);
   }
 
