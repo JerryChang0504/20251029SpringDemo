@@ -35,4 +35,18 @@ public class Product {
 	@Column(name = "product_image")
 	private String image;
 
+	// cons
+	public Product() {
+
+	}
+
+	public Product(Integer id, String name, String description, Integer price, String image) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.image = image;
+	}
+
 }
