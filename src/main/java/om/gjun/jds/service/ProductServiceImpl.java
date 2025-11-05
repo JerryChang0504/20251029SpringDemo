@@ -35,13 +35,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product updateProduct(UpdateReq req) {
 
-		Integer id = req.getId();
-
-		Product product = productRepository.findById(id).orElse(null);
-		product.setName(product.getName());
-		product.setDescription(product.getDescription());
-		product.setPrice(product.getPrice());
-		product.setImage(product.getImage());
+		Product product = productRepository.findById(req.getId()).orElse(null);
+		product.setName(req.getName());
+		product.setDescription(req.getDescription());
+		product.setPrice(req.getPrice());
+		product.setImage(req.getImage());
 
 		return productRepository.save(product);
 	}
