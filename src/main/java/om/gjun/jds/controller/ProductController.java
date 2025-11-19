@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.websocket.server.PathParam;
 import om.gjun.jds.dto.request.ProductReq;
 import om.gjun.jds.dto.request.UpdateProductReq;
 import om.gjun.jds.entity.Product;
@@ -44,4 +46,10 @@ public class ProductController {
 		return productService.updatProduct(req);
 	}
 
+	@Operation(summary = "刪除產品")
+	@ApiResponse(responseCode = "200", description = "刪除成功")
+	@DeleteMapping("deleteProduct")
+	public void deleteProduct(@PathParam("id") Integer id) {
+		productService.deleteProduct(id);
+	}
 }
